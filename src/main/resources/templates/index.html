@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+        integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha384-nYX0jQk7JxCp1jdj3j2QdJbEJaTvTlhexnpMjwIkYQLdk9ZE3/g8CBw87XP2N0pR" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <title>Panji Maulana Al Latief</title>
+</head>
+
+<body>
+
+    <div class="container d-flex justify-content-center vh-100">
+        <div class="box my-auto" id="boxes">
+            <div class="row">
+                <div class="col" align="center">
+                    <img src="../images/IMG_7476.JPG"
+                        style="height: 20rem; width: 20rem; border-radius: 50%; object-fit: cover;">
+                </div>
+                <div class="col mt-sm-2">
+                    <a style="font-size: xx-large;">Hi <span class="fa-shake">👋🏼</span>, <span style="font-weight: bold;">I'm Panji Maulana Al
+                            Latief. </span></a>
+                    <br><a style="font-size: x-large;">I specialize in efficiently creating functional websites for
+                        companies. Currently work at B-Universe (BTV) 📺.
+                        As a <span style="font-weight: bold;">website application developer</span>, I have a strong
+                        understanding of HTML, CSS, and JavaScript.</a>
+                    <a style="text-align: center;">
+                        <a><i class="fa-brands fa-html5 fa-2xl m-2"></i><i class="fa-brands fa-js fa-2xl m-2"></i>
+                            <i class="fa-brands fa-css3-alt fa-2xl m-2"></i></a>
+                    </a>
+                </div>
+
+            </div>
+            <div class="row mt-1">
+                <div class="col my-auto ">
+                    <button class="btn btn-sos btn-outline-dark" type="button"><i
+                            class="fa-brands fa-linkedin"></i></button>
+                </div>
+                <div class="col my-auto" align="right">
+                    <a style="flex: right;" id="see" type="button">See My Project List <i
+                            class="fa-solid fa-arrow-right"></i></a>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="term" style="display: none;">
+            <div id="backOn" class="close float-end" style="color: red;">[X]</div>
+            <div class="terminal">
+                <div class="content">
+                    <p class="output">
+                        Last login: <span id="dateTime"></span>
+                    <pre class="ascii-art">
+                    ██████   █████  ███    ██      ██ ██ 
+                    ██   ██ ██   ██ ████   ██      ██ ██ 
+                    ██████  ███████ ██ ██  ██      ██ ██ 
+                    ██      ██   ██ ██  ██ ██ ██   ██ ██ 
+                    ██      ██   ██ ██   ████  █████  ██                   
+                        </pre>
+                    </p>
+                    <p class="typing"></p>
+                    <p class="input"><span class="prompt">$</span> <span class="cursor"></span></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+    integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
+
+<script>
+
+    let removedElements = [];
+    let terminalDiv = [];
+    let ter = document.getElementById('term')
+    const boxes = document.getElementById('boxes');
+    $(document).ready(function () {
+        removeAllAndStoreTerm()
+    });
+
+
+    // const newButton = document.createElement('button');
+
+    $("#backOn").on('click', function () {
+        boxes.classList.remove('active')
+        boxes.style.height = 'auto';
+        boxes.style.width = 'auto';
+        while (boxes.firstChild) {
+            boxes.removeChild(boxes.firstChild);
+        }
+        restoreElements();
+    })
+
+    $("#see").on('click', function () {
+        boxes.style.height = (boxes.clientHeight+'px');
+        boxes.style.width = (boxes.clientWidth+'px');
+        removeAllAndStore()
+        // document.getElementById('boxes').classList.add('active');
+        boxes.classList.add('active')
+        
+
+        // newButton.textContent = 'New Button';
+
+
+        // Add the new elements to the 'boxes' element
+        // boxes.appendChild(terminalDiv);
+        // boxes.appendChild(newButton);
+
+        // boxes.appendChild(newButton);
+        // console.log(removedElements)
+        
+        // console.log(pnj, tng)
+        restoreTerminal()
+    })
+
+    const currentDate = new Date();
+    const formattedDate =
+        currentDate.toDateString().split(" ").slice(0, 3).join(" ") +
+        " " +
+        currentDate.toTimeString().split(" ")[0].split(":").slice(0, 3).join(":");
+    document.getElementById("dateTime").innerHTML = formattedDate;
+    const typingElement = document.querySelector(".typing");
+    let index = 0;
+    let currentText = "";
+    let isDeleting = false;
+    let currentMenu = "main";
+
+    const menus = {
+        main: `Select a menu:<br><span onclick="handleMenuClick('1')">[1] My Works</span><br>
+        <span onclick="handleMenuClick('2')">[2] Contact me</span><br>`,
+        2: `Contact:<br>- Email: <a href="mailto:panji.maulana.al@gmail.com">panji.maulana.al@gmail.com</a><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+        1: `Some of my Projects:<br><br>
+- <strong>AMS</strong>: Asset Management System for BTV. <a href="https://github.com/glizzykingdreko/DiscordWizard" target="_blank">[GitHub]</a><br>
+- <strong>Cekabe Company Profile</strong>: A Website for Cekabe portfolio. <a href="https://github.com/glizzykingdreko/CalIntra" target="_blank">[GitHub]</a><br>
+- <strong>vCard</strong>: A web virtual Bussiness Card for BTV employee. <a href="https://github.com/glizzykingdreko/PerimeterX-Deobfuscator" target="_blank">[GitHub]</a><br>
+- <strong>Daily Reporting</strong>: An Apps for daily reporting IT BTV. <a href="https://github.com/glizzykingdreko/TMX-Deobfuscator" target="_blank">[GitHub]</a><br>
+- <strong>One Basket</strong>: An Platform with transcoder using for contributor upload the news. <a href="https://github.com/glizzykingdreko/adyen-4.5.0" target="_blank">[GitHub]</a> | <a href="https://github.com/glizzykingdreko/adyen-4.5.0" target="_blank">[v4.4.1]</a><br>
+<span onclick="handleMenuClick('B')">[B] Back</span>`
+    };
+
+    function handleMenuClick(menuKey) {
+        if (menuKey in menus && currentMenu !== menuKey) {
+            isDeleting = true;
+            typeDeleteAnimation(() => {
+                currentMenu = menuKey;
+                currentText = menus[menuKey];
+                index = 0;
+                typeDeleteAnimation();
+            });
+        }
+        else if ((menuKey === "B" || menuKey === "b") && currentMenu !== "main") {
+            isDeleting = true;
+            typeDeleteAnimation(() => {
+                currentMenu = "main";
+                currentText = menus.main;
+                index = 0;
+                typeDeleteAnimation();
+            });
+        }
+    }
+    function typeDeleteAnimation(callback) {
+        let speed = 7; // default typing speed
+        let deleteSpeed = 3; // default deletion speed
+
+        if (currentMenu === "1" || currentMenu === "3") {
+            speed = 1; // Makes the typing faster for "Who is glizzy".
+            deleteSpeed = 1; // Makes the deletion faster for "Who is glizzy". Adjust as needed.
+        }
+
+        if (isDeleting && typingElement.innerHTML !== "") {
+            if (currentText.charAt(index - 1) === ">") {
+                const openTagIndex = currentText.lastIndexOf("<", index);
+                const tagName = currentText.substring(
+                    openTagIndex + 1,
+                    currentText.indexOf(" ", openTagIndex)
+                );
+                const startTagIndex = currentText.lastIndexOf(
+                    `</${tagName}>`,
+                    index
+                );
+                index = startTagIndex;
+            } else {
+                index--;
+            }
+            currentText = currentText.slice(0, index);
+            typingElement.innerHTML = currentText;
+
+            setTimeout(() => typeDeleteAnimation(callback), deleteSpeed);
+        } else if (isDeleting) {
+            isDeleting = false;
+            if (callback) callback();
+        } else if (!isDeleting && index < currentText.length) {
+            if (currentText.charAt(index) === "<") {
+                if (currentText.substr(index, 4) === "<br>") {
+                    const br = document.createElement("br");
+                    typingElement.appendChild(br);
+                    index += 4;
+                } else {
+                    const closingTagIndex = currentText.indexOf(">", index);
+                    const tagName = currentText
+                        .substring(index + 1, closingTagIndex)
+                        .split(" ")[0];
+                    const endTagIndex =
+                        currentText.indexOf(`</${tagName}>`, index) +
+                        `</${tagName}>`.length;
+                    const outerHTML = currentText.substring(index, endTagIndex);
+                    const tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = outerHTML;
+                    const childElement = tempDiv.firstChild;
+
+                    if (tagName === "a") {
+                        childElement.target = "_blank";
+                        speed = 1; // Faster typing for <a> tag
+                    } else if (tagName === "span") {
+                        childElement.onclick = function () {
+                            const menuKey = childElement
+                                .getAttribute("onclick")
+                                .replace("handleMenuClick('", "")
+                                .replace("')", "");
+                            handleMenuClick(menuKey);
+                        };
+                        speed = 1; // Faster typing for <span> tag
+                    }
+
+                    typingElement.appendChild(childElement);
+                    index = endTagIndex;
+                }
+            } else {
+                typingElement.innerHTML += currentText.charAt(index);
+                index++;
+            }
+
+            setTimeout(typeDeleteAnimation, speed);
+        }
+    }
+
+    function handleUserInput(event) {
+        const key = event.key;
+        if (key in menus && currentMenu !== key) {
+            isDeleting = true;
+            typeDeleteAnimation(() => {
+                currentMenu = key;
+                currentText = menus[key];
+                index = 0;
+                typeDeleteAnimation();
+            });
+        } else if ((key === "B" || key === "b") && currentMenu !== "main") {
+            isDeleting = true;
+            typeDeleteAnimation(() => {
+                currentMenu = "main";
+                currentText = menus.main;
+                index = 0;
+                typeDeleteAnimation();
+            });
+        }
+    }
+
+    document.addEventListener("keydown", handleUserInput);
+
+    // Initialize the typing animation with the main menu on page load
+    currentText = menus.main;
+    typeDeleteAnimation();
+
+
+
+    // Remove all existing elements within 'boxes' and store them
+    function removeAllAndStore() {
+        removedElements = Array.from(boxes.children); // Store the removed elements
+        while (boxes.firstChild) {
+            boxes.removeChild(boxes.firstChild);
+        }
+    }
+
+    function restoreElements() {
+        removedElements.forEach(element => {
+            boxes.appendChild(element);
+        });
+    }
+
+    function removeAllAndStoreTerm() {
+        terminalDiv = Array.from(ter.children); // Store the removed elements
+        while (ter.firstChild) {
+            ter.removeChild(ter.firstChild);
+        }
+    }
+
+    function restoreTerminal() {
+        terminalDiv.forEach(element => {
+            boxes.appendChild(element);
+        });
+        
+    }
+
+
+    // Event listener for the "New Button" to restore removed elements
+
+
+
+
+
+</script>

@@ -1,0 +1,238 @@
+.box{
+    font-family: 'Nunito', sans-serif;
+    border-radius: 50px;
+    padding: 10%;
+    box-shadow: 1px 10px 66px -6px rgba(0,0,0,0.59);
+-webkit-box-shadow: 1px 10px 66px -6px rgba(0,0,0,0.59);
+-moz-box-shadow: 1px 10px 66px -6px rgba(0,0,0,0.59);
+background-color: rgb(243, 244, 245);
+
+
+background: linear-gradient(to top, #000 50%, #fff 50%);
+  background-size: 100% 200%;
+  background-position: top;
+  transition: all .35s ease-out;
+}
+
+.active{
+  background-position: bottom;
+  color: #fff;
+}
+
+.btn-sos{
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    margin-top: 3%;
+}
+
+#see {
+    --c:20px;  /* the cube perspective */
+    
+    --g:calc(var(--c)*0.707); /* 0.707 = cos(45deg) = sin(45deg) */
+    
+    padding:8px;
+    border: solid transparent;
+    border-width:0 0 var(--c) var(--c) ;
+    background:
+      linear-gradient(-45deg,transparent var(--g),rgba(255,255,255,0.6) 0) left   /var(--c) 100%,
+      linear-gradient(135deg,transparent var(--g),rgba(255,255,255,0.3) 0) bottom /100% var(--c);
+    background-repeat:no-repeat;
+    background-origin:border-box;
+    transition:0.3s,background-color 0.3s 0.3s,color 0.3s 0.3s;
+    transform:translate(calc(var(--c)/-1),calc(var(--c)/1));
+    clip-path: 
+      polygon(var(--c) 0%, var(--c) 0%, 
+      100% 0%, 
+      100% calc(100% - var(--c)),100% calc(100% - var(--c)),
+      var(--c) calc(100% - var(--c)),
+      var(--c) calc(100% - var(--c)));
+  }
+  #see:hover {
+    transition:0.3s 0.3s,background-color 0.3s,color 0.3s;
+    background-color:rgb(0, 0, 0);
+    color:#fff;
+    transform:translate(0,0);
+    clip-path: 
+      polygon(0% var(--c), var(--c) 0%, 
+      100% 0%, 
+      100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 
+      0% 100%,0% 100%);
+  }
+
+
+  
+
+
+body{
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Opera 12+ */
+  animation: bg-scrolling-reverse 0.92s infinite;
+  /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+/* Background data (Original source: https://subtlepatterns.com/grid-me/) */
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-moz-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-o-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-webkit-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @-moz-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @-o-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+
+
+  .terminal {
+    background-color: #000;
+    border-radius: 10px;
+    /* width: 100vw; */
+    /* height: 100vh; */
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+
+.header {
+    background-color: #1e1e1e; /* Darker shade */
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+}
+
+
+.ascii-art {
+    font-size: 1vw; /* Default font size */
+    white-space: pre-wrap; /* This will make sure the content wraps */
+    word-wrap: break-word; /* This will break words properly */
+}
+
+/* Adjust font size for smaller screens */
+@media only screen and (max-width: 600px) {
+    .ascii-art {
+        font-size: 1.7vw;
+    }
+}
+
+/* Adjust font size for medium screens */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .ascii-art {
+        font-size: 1.6vw;
+    }
+}
+
+/* Adjust font size for larger screens */
+@media only screen and (min-width: 901px) {
+    .ascii-art {
+        font-size: 1vw;
+    }
+}
+
+.content {
+    /* padding: 20px; */
+    color: #00ff00;
+    /* height: calc(100vh - 50px); Subtracting the height of header */
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+.cursor {
+    background-color: #00ff00;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.header {
+    background-color: #282c34;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    height: 14px;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px; /* Increased gap */
+}
+
+
+a {
+    color: #00ff00;
+    text-decoration: none;
+    border-bottom: 1px dashed #00ff00;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: #00cc00;
+    background-color: #222;
+    border-bottom: 1px solid #00cc00;
+}
+
+
+  }
+
+  span[onclick]:hover {
+    cursor: pointer;
+    background-color: rgba(0, 255, 0, 0.2);
+}

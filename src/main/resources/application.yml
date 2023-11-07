@@ -1,0 +1,41 @@
+spring:
+   profiles:
+      active: panji
+---
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  config:
+    activate:
+      on-profile: panji
+  application:
+    name: Panji
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  web:
+    resources:
+      static-locations: classpath:/static/
+      cache:
+        period: 0
+server:
+  max-http-header-size: 10MB
+  port: 8087
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+  servlet:
+    session:
+        timeout: PT30M
+
+---
+
