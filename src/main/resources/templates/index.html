@@ -108,8 +108,10 @@
 
     $("#backOn").on('click', function () {
         boxes.classList.remove('active')
-        boxes.style.height = 'auto';
-        boxes.style.width = 'auto';
+        boxes.style.height = null;
+        boxes.style.width = null;
+        boxes.style.minHeight = null;
+        boxes.style.minWidth = null;
         while (boxes.firstChild) {
             boxes.removeChild(boxes.firstChild);
         }
@@ -117,8 +119,8 @@
     })
 
     $("#see").on('click', function () {
-        boxes.style.height = (boxes.clientHeight+'px');
-        boxes.style.width = (boxes.clientWidth+'px');
+        boxes.style.minHeight = (boxes.clientHeight+'px');
+        boxes.style.minWidth = (boxes.clientWidth+'px');
         removeAllAndStore()
         // document.getElementById('boxes').classList.add('active');
         boxes.classList.add('active')
